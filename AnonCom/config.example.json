@@ -1,0 +1,10 @@
+{
+  "Username": "admin",
+  "ApiKey": "apikey",
+  "SiteUrl": "http://locahost:50078/",
+  "ExcludedUserIds": [
+    2104,
+    2105,
+    2106
+  ]
+}
