@@ -12,8 +12,7 @@ namespace FourRoads.TelligentCommunity.Utilities.VerintCommunityAnonymizer
             var configFileName = args.Length > 0 ? args[0] : "config.json";
             if (!File.Exists(configFileName))
             {
-                Console.WriteLine(
-                    @"Could not find file named ""config.json"" and no config filename was passed as an argument");
+                Console.WriteLine( @"Cannot find file named ""config.json"" and no filename was passed as an argument");
                 return;
             }
 
