@@ -76,7 +76,7 @@ namespace FourRoads.TelligentCommunity.Utilities.VerintCommunityAnonymizer
                             $"{user.Id}, {user.Username}=>{upd.Username}, {user.PrivateEmail}=>{upd.PrivateEmail}");
 
                         //delete avatar
-                        restClient.Post<Result>(GedDeleteUserAvatar(user.Id));
+                        restClient.Post<Result>(GetDeleteUserAvatar(user.Id));
                         continue;
                     }
 
@@ -93,7 +93,7 @@ namespace FourRoads.TelligentCommunity.Utilities.VerintCommunityAnonymizer
             }
         }
 
-        private IRestRequest GedDeleteUserAvatar(int userId)
+        private IRestRequest GetDeleteUserAvatar(int userId)
         {
             return new RestRequest("api.ashx/v2/users/{id}/avatar.json")
                 .AddUrlSegment("id", userId)
@@ -117,6 +117,7 @@ namespace FourRoads.TelligentCommunity.Utilities.VerintCommunityAnonymizer
         private static IRestRequest GetUsersRequest(int pageSize, int pageIndex)
         {
             return new RestRequest("api.ashx/v2/users.json")
+                .AddParameter("AccountStatus" , "All")
                 .AddParameter("SortBy", "JoinedDate")
                 .AddParameter("SortOrder", "Ascending")
                 .AddParameter("PageSize", pageSize)
