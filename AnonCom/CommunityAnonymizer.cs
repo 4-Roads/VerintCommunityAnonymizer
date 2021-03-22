@@ -117,6 +117,7 @@ namespace FourRoads.TelligentCommunity.Utilities.VerintCommunityAnonymizer
         private static IRestRequest GetUsersRequest(int pageSize, int pageIndex)
         {
             return new RestRequest("api.ashx/v2/users.json")
+                .AddParameter("IncludeHidden" , true)
                 .AddParameter("AccountStatus" , "All")
                 .AddParameter("SortBy", "JoinedDate")
                 .AddParameter("SortOrder", "Ascending")
@@ -172,7 +173,7 @@ namespace FourRoads.TelligentCommunity.Utilities.VerintCommunityAnonymizer
             public string ApiKey { get; set; }
             public string SiteUrl { get; set; }
             public IEnumerable<int> ExcludedUserIds { get; set; }
-            public int PageSize { get; } = 100;
+            public int PageSize { get; set; }
             public bool IgnoreSslErrors { get; set; }
         }
     }
